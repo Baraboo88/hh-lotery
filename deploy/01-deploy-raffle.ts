@@ -11,15 +11,16 @@ const fundMe: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const { deploy, log, get } = deployments;
     const { deployer } = await getNamedAccounts();
     const chainId = network.config.chainId;
-    let ethUsdPriceFeedAddress;
+    let vrfCoordinatorAddress;
 
     if (developmentChains.includes(network.name)) {
-        const ethUsdAggregator = await get("MockV3Aggregator");
-        ethUsdPriceFeedAddress = ethUsdAggregator.address;
+        const vrfCoordinator = await get("VRFCoordinatorV2Mock");
+        vrfCoordinatorAddress = vrfCoordinator.address;
     } else {
-        ethUsdPriceFeedAddress = networkConfig[chainId!]["ethUsdPriceFeed"];
+        vrfCoordinatorAddress = networkConfig[chainId!]["VRFCoordinator"];
     }
-    const args = [ethUsdPriceFeedAddress];
+    const args = [vrfCoordinatorAddress];
+    
     const fundMe = await deploy("Raffle", {
         from: deployer,
         args: args,

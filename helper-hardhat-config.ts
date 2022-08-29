@@ -1,21 +1,32 @@
+import { ethers } from "hardhat";
 
 interface ChainModel{
     name: string;
-    ethUsdPriceFeed: string;
+    VRFCoordinator?: string;
     blockConfirmations?: number;
+    entranceFee?: any
 }
 
 export const networkConfig: {[id: number]: ChainModel} = {
     4: {
         name: 'rinkeby',
-        ethUsdPriceFeed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
+        VRFCoordinator: '0x6168499c0cFfCaCD319c818142124B7A15E857ab',
         blockConfirmations: 6,
+        entranceFee:  ethers.utils.parseEther('0.1')
+    },
+    31337:{
+        name: 'hardhat',
+        entranceFee: ethers.utils.parseEther('0.1')
     },
     137: {
         name: "poligon",
-        ethUsdPriceFeed: ''
     }
 }
+
+
+export const BASE_FEE = ethers.utils.parseEther('0.25'); // 0.25 is the premium. It consts 0.25 LINK Per request
+
+export const GAS_PRICE_LINK = 1e9;  //calculated value based on the gas price of the chain
 
 export const developmentChains = ["hardhat", "localhost"]
 export const DECIMALS = "18";
