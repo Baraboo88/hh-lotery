@@ -7,6 +7,7 @@ import "hardhat-gas-reporter";
 import "dotenv/config";
 import "solidity-coverage";
 import "hardhat-deploy";
+import "@typechain/hardhat";
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xkey";
