@@ -34,7 +34,7 @@ const config: HardhatUserConfig = {
     apiKey: ETHERSCAN_API_KEY,
   },
   gasReporter: {
-    enabled: true,
+    enabled: false,
     outputFile: "gas-report.txt",
     noColors: true,
     currency: "USD",
@@ -50,6 +50,9 @@ const config: HardhatUserConfig = {
       default: 1,
     },
   },
+  mocha:{
+    timeout: 500000
+  }
 };
 
 export default config;

@@ -65,4 +65,4 @@ const raffle: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 export default raffle;
 
-raffle.tags = ["all", "fundme"];
+raffle.tags = ["all", "raffle"];
