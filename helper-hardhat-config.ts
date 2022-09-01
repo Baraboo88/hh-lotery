@@ -30,7 +30,7 @@ export const networkConfig: {[id: number]: ChainModel} = {
         interval: '30'
     },
     137: {
-        name: "poligon",
+        name: "polygon",
     }
 }
 
